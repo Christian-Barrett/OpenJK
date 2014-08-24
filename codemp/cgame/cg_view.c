@@ -2678,7 +2678,7 @@ void CG_DrawActiveFrame( int serverTime, stereoFrame_t stereoView, qboolean demo
 		if (timescale.value < cg_timescaleFadeEnd.value) {
 			timescale.value += cg_timescaleFadeSpeed.value * ((float)cg.frametime) / 1000;
 			if (timescale.value > cg_timescaleFadeEnd.value)
-				timescale.value = cg_timescaleFadeEnd.value;
+				timescale.value = cg_timescaleFadeEnd.value; //TODO: Test if this code can ever be reached
 		}
 		else {
 			timescale.value -= cg_timescaleFadeSpeed.value * ((float)cg.frametime) / 1000;

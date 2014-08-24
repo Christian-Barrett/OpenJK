@@ -914,8 +914,9 @@ int PM_SaberLockLoseAnim( playerState_t *genemy, qboolean victory, qboolean supe
 		}
 		else
 		{
-			if ( !victory )
+			if ( !victory ) //This expression is always false due to line 911, so I expect it to never run
 			{//no-one won
+				//TODO: Is this ever called? If so, when?
 				genemy->saberMove = LS_K1_T_;
 				loseAnim = BOTH_K1_S1_T_;
 			}
@@ -936,8 +937,9 @@ int PM_SaberLockLoseAnim( playerState_t *genemy, qboolean victory, qboolean supe
 		}
 		else
 		{
-			if ( !victory )
+			if ( !victory ) //This expression is always false due to line 934, so I expect it to never run
 			{//no-one won
+				//TODO: Is this ever called? If so, when?
 				genemy->saberMove = LS_A_T2B;
 				loseAnim = BOTH_A3_T__B_;
 			}
@@ -960,8 +962,9 @@ int PM_SaberLockLoseAnim( playerState_t *genemy, qboolean victory, qboolean supe
 		}
 		else
 		{
-			if ( !victory )
+			if ( !victory ) //This expression is always false due to line 957, so I expect it to never run
 			{//no-one won
+				//TODO: Is this ever called? If so, when?
 				loseAnim = BOTH_CCWCIRCLEBREAK;
 			}
 			else

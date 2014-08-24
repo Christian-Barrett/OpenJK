@@ -135,7 +135,7 @@ static qboolean BG_ParseVehWeaponParm( vehWeaponInfo_t *vehWeapon, char *parmNam
 
 				break;
 			case VF_VECTOR:
-				_iFieldsRead = sscanf (value, "%f %f %f", &vec[0], &vec[1], &vec[2]);
+				_iFieldsRead = sscanf (value, "%5f %5f %5f", &vec[0], &vec[1], &vec[2]);
 				assert(_iFieldsRead==3 );
 				if (_iFieldsRead!=3)
 				{
@@ -779,7 +779,7 @@ static qboolean BG_ParseVehicleParm( vehicleInfo_t *vehicle, char *parmName, cha
 
 				break;
 			case VF_VECTOR:
-				_iFieldsRead = sscanf (value, "%f %f %f", &vec[0], &vec[1], &vec[2]);
+				_iFieldsRead = sscanf (value, "%5f %5f %5f", &vec[0], &vec[1], &vec[2]);
 				assert(_iFieldsRead==3 );
 				if (_iFieldsRead!=3)
 				{
