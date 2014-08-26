@@ -254,6 +254,7 @@ int G_GetHitLocation(gentity_t *target, vec3_t ppoint)
 			{
 				return HL_CHEST_LT;
 			}
+			//TODO: investigate this expression, seems like it would be always false given 232
 			else if(fdot < 0)
 			{
 				return HL_CHEST;

@@ -1163,6 +1163,11 @@ int G_TeamForSiegeClass(const char *clName)
 		}
 
 		i++;
+		//TODO: evaluate this and confirm everything is all right.
+		//line 1155 uses i to access stm->classes which seems to have a max width
+		//of 16. Based on the value of SIEGETEAM_TEAM2, I'd expect i to not reach 
+		//this MAX_SIEGE_CLASSES, so this is either redundant or we need a guard at
+		//1155
 		if (i >= MAX_SIEGE_CLASSES || i >= stm->numClasses)
 		{
 			if (team == SIEGETEAM_TEAM2)

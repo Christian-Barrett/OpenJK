@@ -913,6 +913,7 @@ qboolean CalculateUntouchable(gentity_t *ent)
 		return qfalse;
 	}
 	//------------------------------------------------------ MUST HAVE ACHIEVED 2 KILLS PER MINUTE
+	//TODO: Investigate playtime further - either playTime==0 is useless or it can eval to 0 and be a divide by zero
 	if ( ((float)ent->client->ps.persistant[PERS_SCORE])/((float)(playTime)) < 2.0  || playTime==0)
 		return qfalse;
 	//------------------------------------------------------ MUST HAVE ACHIEVED 2 KILLS PER MINUTE

@@ -45,6 +45,7 @@ qboolean	G_SpawnVector( const char *key, const char *defaultString, float *out )
 	qboolean	present;
 
 	present = G_SpawnString( key, defaultString, &s );
+	
 	if ( sscanf( s, "%f %f %f", &out[0], &out[1], &out[2] ) != 3 ) {
 		trap->Print( "G_SpawnVector: Failed sscanf on %s (default: %s)\n", key, defaultString );
 		VectorClear( out );
@@ -770,7 +771,8 @@ char *G_NewString( const char *string )
 
 	for ( i=0; i<len; i++ )
 	{// turn \n into a real linefeed
-		if ( string[i] == '\\' && i < len-1 )
+		//STYLE: Re-ordered conditional for bounds checking
+		if ( i < len-1 && string[i] == '\\' )
 		{
 			if ( string[i+1] == 'n' )
 			{
@@ -800,7 +802,8 @@ char *G_NewString_Safe( const char *string )
 
 	for ( i=0; i<len; i++ )
 	{// turn \n into a real linefeed
-		if ( string[i] == '\\' && i < len-1 )
+		//STYLE:Re-ordered conditional for bounds checking
+		if ( i < len-1 && string[i] == '\\'   )
 		{
 			if ( string[i+1] == 'n' )
 			{
@@ -848,6 +851,7 @@ void G_ParseField( const char *key, const char *value, gentity_t *ent )
 			*(char **)(b+f->ofs) = G_NewString (value);
 			break;
 		case F_VECTOR:
+			
 			if ( sscanf( value, "%f %f %f", &vec[0], &vec[1], &vec[2] ) == 3 ) {
 				((float *)(b+f->ofs))[0] = vec[0];
 				((float *)(b+f->ofs))[1] = vec[1];
@@ -1036,6 +1040,7 @@ static void HandleEntityAdjustment(void)
 	G_SpawnString("origin", NOVALUE, &value);
 	if (Q_stricmp(value, NOVALUE) != 0)
 	{
+		
 		if ( sscanf( value, "%f %f %f", &origin[0], &origin[1], &origin[2] ) != 3 ) {
 			trap->Print( "HandleEntityAdjustment: failed sscanf on 'origin' (%s)\n", value );
 			VectorClear( origin );
@@ -1058,6 +1063,7 @@ static void HandleEntityAdjustment(void)
 	G_SpawnString("angles", NOVALUE, &value);
 	if (Q_stricmp(value, NOVALUE) != 0)
 	{
+		
 		if ( sscanf( value, "%f %f %f", &angles[0], &angles[1], &angles[2] ) != 3 ) {
 			trap->Print( "HandleEntityAdjustment: failed sscanf on 'angles' (%s)\n", value );
 			VectorClear( angles );
@@ -1089,6 +1095,7 @@ static void HandleEntityAdjustment(void)
 	G_SpawnString("direction", NOVALUE, &value);
 	if (Q_stricmp(value, NOVALUE) != 0)
 	{
+		
 		if ( sscanf( value, "%f %f %f", &angles[0], &angles[1], &angles[2] ) != 3 ) {
 			trap->Print( "HandleEntityAdjustment: failed sscanf on 'direction' (%s)\n", value );
 			VectorClear( angles );

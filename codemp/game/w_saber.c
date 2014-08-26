@@ -5707,6 +5707,8 @@ void WP_SaberStartMissileBlockCheck( gentity_t *self, usercmd_t *ucmd  )
 
 		if ( ent->s.weapon != WP_SABER )
 		{//only block shots coming from behind
+			//QUESTION: Why is dot1 assigned a value here, as opposed to just checking the dotproduct?
+			//TODO: determine if we could rip out dot1
 			if ( (dot1 = DotProduct( dir, forward )) < SABER_REFLECT_MISSILE_CONE )
 				continue;
 		}
@@ -5718,6 +5720,7 @@ void WP_SaberStartMissileBlockCheck( gentity_t *self, usercmd_t *ucmd  )
 		//see if they're heading towards me
 		VectorCopy( ent->s.pos.trDelta, missile_dir );
 		VectorNormalize( missile_dir );
+		//TODO: determine if we should rip out dot2, see line 5710
 		if ( (dot2 = DotProduct( dir, missile_dir )) > 0 )
 			continue;
 
